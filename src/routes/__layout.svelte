@@ -1,21 +1,34 @@
 <script>
-	import { onMount } from 'svelte';
-
 	import Tabs from '../components/Tabs.svelte';
+	import { hasTabs } from '../stores/main';
 
-	let hasTabs = false;
+	let showTabs = false;
 
-	onMount(() => {
-		hasTabs =
-			window.location.pathname.includes('login') || window.location.pathname.includes('scanner');
-	});
+	hasTabs.subscribe((value) => (showTabs = value));
 </script>
 
 <ion-app>
-	<ion-content fullscreen>
+	<ion-content fullscreen id="main-content">
 		<slot />
 	</ion-content>
-	{#if !hasTabs}
+
+	{#if showTabs}
 		<Tabs />
 	{/if}
 </ion-app>
+
+<style lang="scss" global>
+	#main-content {
+		--background: rgba(242, 220, 177, 0.5);
+
+		* {
+			font-family: 'Endor';
+			color: brown;
+
+			.title {
+				font-weight: bolder;
+				font-size: xx-large;
+			}
+		}
+	}
+</style>

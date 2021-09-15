@@ -14,25 +14,17 @@
 	};
 </script>
 
-<ion-card on:click={handleClick} class="card-container" style="--background: url({bgImage})">
-	<ion-card-header class="card-title-container">
-		<ion-card-title>{title}</ion-card-title>
-	</ion-card-header>
-</ion-card>
+<ion-card on:click={handleClick} class="card-container" style="--background: url({bgImage})" />
 
 <style lang="scss">
 	.card-container {
 		aspect-ratio: 21 / 9;
 		display: flex;
 		flex-flow: column-reverse;
-		margin: 2px 0px;
+		margin: 40px 20px;
 		background-size: 100% 100%;
 		background-repeat: no-repeat;
+        background-color: white;
 	}
 
-	.card-title-container {
-		* {
-			font-size: xx-large;
-		}
-	}
 </style>
