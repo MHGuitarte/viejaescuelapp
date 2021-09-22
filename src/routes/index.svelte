@@ -5,11 +5,11 @@
 
 	import GameCard from '../components/GameCard.svelte';
 
-	import DnDLogo from '../../static/logos/dnd_logo.png';
-	import ViejaEscuelaLogo from '../../static/logos/viejaescuela_logo.png';
+	import DnDLogo from '/logos/dnd_logo.png';
+	import ViejaEscuelaLogo from '/logos/viejaescuela_logo.png';
 
 	onMount(() => {
-		hasTabs.update(false);
+		hasTabs.set(false);
 	});
 </script>
 
@@ -22,10 +22,3 @@
 		<GameCard href="/dnd" bgImage={DnDLogo} title="Dungeons & Dragons" />
 	</ion-col>
 </ion-row>
-
-<style lang="scss">
-	@font-face {
-		font-family: 'Endor';
-		src: url('../../static/fonts/endor.ttf');
-	}
-</style>

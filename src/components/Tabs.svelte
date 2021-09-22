@@ -1,15 +1,18 @@
 <script>
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import { tabs } from '../stores/main';
 	import Tab from './Tab.svelte';
 </script>
 
 <ion-tab-bar class="container">
-	<Tab path="/catalog" icon="fast-food" />
-	<span class="tab-separator" />
-	<Tab path="/offers" icon="pricetags" />
-	<span class="tab-separator" />
-	<Tab path="/profile" icon="person" />
+	{#if $tabs.length}
+		{#each $tabs as tab, idx}
+			<Tab path={tab.path} icon={tab.icon} action={tab.action} isLastTab={$tabs.length - 2 < idx} />
+		{/each}
+	{:else}
+		<Tab path="/catalog" icon="fast-food" />
+		<Tab path="/offers" icon="pricetags" />
+		<Tab path="/profile" icon="person" isLastTab />
+	{/if}
 </ion-tab-bar>
 
 <style>
@@ -19,14 +22,5 @@
 		box-shadow: 0px -4px 4px rgba(0, 15, 159, 0.22);
 		z-index: 1;
 		background-color: white;
-	}
-
-	.tab-separator {
-		width: 2px;
-		height: 75%;
-		align-self: center;
-		content: '';
-		background-color: rgba(0, 15, 159, 0.1);
-		display: block;
 	}
 </style>

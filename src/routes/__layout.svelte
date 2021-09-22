@@ -1,10 +1,6 @@
 <script>
 	import Tabs from '../components/Tabs.svelte';
 	import { hasTabs } from '../stores/main';
-
-	let showTabs = false;
-
-	hasTabs.subscribe((value) => (showTabs = value));
 </script>
 
 <ion-app>
@@ -12,12 +8,16 @@
 		<slot />
 	</ion-content>
 
-	{#if showTabs}
+	{#if $hasTabs}
 		<Tabs />
 	{/if}
 </ion-app>
 
 <style lang="scss" global>
+	@font-face {
+		font-family: 'Endor';
+		src: url('/fonts/endor.ttf');
+	}
 	#main-content {
 		--background: rgba(242, 220, 177, 0.5);
 
